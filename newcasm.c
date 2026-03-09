@@ -257,13 +257,15 @@ void sub(char *s, FILE* f, char* argname, int val) {
 	    	
 		} else if(strncmp(s, "op", 2) == 0) {
 	    	s = s + 2;
-	    	int k = 0, j = 0, i = 0;
+	    	int k = 0, j = 0, i = 0, l = 0;
 	    	char *varname = malloc(slen(s) + 1);
 	    	char *string = malloc(slen(s) + 1);
 	    	int *nums = malloc(slen(s) + 1);
 	    	int check_pos = 0;
 	    	int is_numeric = 0;
 	    	int is_string = 0;
+	    	char *decname = malloc(slen(s) + 1);
+	    	int is_var = 0;
 	    	
 		    while(*s == ' ') s++;
 		    
@@ -291,15 +293,22 @@ void sub(char *s, FILE* f, char* argname, int val) {
 				while(*s != ';') {
 					if(is_number(*s)) {
 						nums[i++] = atoi(s);
+					} else if(is_number(*s) || is_letter(*s) || is_specialchar(*s)) {
+						decname[l++] = *s;
 					}
 					s++;
 				}
 				is_numeric = 1;
+				decname[l] = '\0';
+				
+				if(decname != NULL) {
+					is_numeric = 0;
+					is_var = 1;
+				}
 			}
 			
 		}
 			string[j] = '\0';
-			
 			for(int i = 0; i < namec; i++) {
 				if(strcmp(varnames[i], varname) == 0 && (is_string && !is_numeric)) {
 					check_pos = i;		
@@ -307,6 +316,11 @@ void sub(char *s, FILE* f, char* argname, int val) {
 				} else if(strcmp(varnames[i], varname) == 0 && (!is_string && is_numeric)) {
 					char temp[2];
 					sprintf(temp, "%d", nums[0]);
+					strcat(strlist[0], temp);
+					
+				} else if(strcmp(varnames[i], varname) == 0 && is_var) {
+					char temp[2];
+					sprintf(temp, "%d", numsc[0]);
 					strcat(strlist[0], temp);
 				}
 			}
