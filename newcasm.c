@@ -361,23 +361,38 @@ void sub(char *s, FILE* f, char* argname, int val) {
 	    } else if(strncmp(s, "syscall", 7) == 0) {
 	    	s = s + 7;
 	    	char *varname = malloc(slen(s) + 1);
-	    	int i = 0, k = 0;
+	    	int i = 0, k = 0, j = 0;
 	    	int check_pos = 0;
+	    	char *string = malloc(slen(s) + 1);
 	    	while(*s == ' ') s++;
 	    	
-	    	while(*s != ';') {
-				if(is_number(*s) || is_letter(*s) || is_specialchar(*s)) {
-					varname[k++] = *s;
+	    	if(*s == '"') {
+	    		s++;
+	    		while(*s != '"') {
+	    			string[j++] = *s;
+	    			s++;
 				}
-				s++;
+				string[j] = '\0';
+				
+			} else {
+			   	while(*s != ';') {
+				    if(is_number(*s) || is_letter(*s) || is_specialchar(*s)) {
+					   varname[k++] = *s;
+				    } 
+				    s++;
+			    }	
+				varname[k] = '\0';
 			}
-			varname[k] = '\0';
-			
+	    
 			for(int i = 0; i < namec; i++) {
 				if(strcmp(varnames[i], varname) == 0) {
 					check_pos = i;
 					system(strlist[check_pos]);
-				}
+				} 
+			}
+			
+			if(string != NULL) {
+				system(string);
 			}
 	    	
 	   }	
