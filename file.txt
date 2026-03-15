@@ -1,0 +1,9 @@
+for(int i = 1; i < 2; i+1):
+   
+   string str = "salve";
+   string bruh = "hey";
+   
+   op str, bruh;
+   op str, "B00BS";
+
+   print str;
