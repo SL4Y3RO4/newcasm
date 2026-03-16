@@ -2,9 +2,7 @@ for(int i = 1; i < 2; i+1):
    
    string str = "salve";
    string bruh = "hey";
-   int h = 5;
    
    op str, bruh;
-   op str, h;
 
    print str;

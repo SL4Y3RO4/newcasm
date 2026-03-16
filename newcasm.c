@@ -327,14 +327,15 @@ void sub(char *s, FILE* f, char* argname, int val) {
 					sprintf(temp, "%d", nums[0]);
 					strcat(strlist[0], temp);
 					
-				} else if(strcmp(varnames[i], varname) == 0 && (is_var && flags[i] == 1)) {
+				} else if(strcmp(varnames[i], varname) == 0 && (is_var && flags[cmp - 1] == 1)) {
 					char temp[2];
 					sprintf(temp, "%d", numsc[0]);
 					strcat(strlist[0], temp);
 					
-				} else if(strcmp(varnames[i], varname) == 0 && (is_var && flags[i] == 3)) {
-					strcat(strlist[0], strlist[cmp - 1]);
+				} else if(strcmp(varnames[i], varname) == 0 && (is_var && flags[cmp - 1] == 3)) {
+					strcat(strlist[0], strlist[1]);
 				}
+				
 			}
 		    
 		    
