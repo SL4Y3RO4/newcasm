@@ -317,6 +317,7 @@ void sub(char *s, FILE* f, char* argname, int val) {
 			}
 			
 		}
+		
 			for(int i = 0; i < namec; i++) {		
 				if(strcmp(varnames[i], varname) == 0 && (is_string && !is_numeric)) {	
 					strcat(strlist[0], string);
@@ -332,7 +333,7 @@ void sub(char *s, FILE* f, char* argname, int val) {
 					strcat(strlist[0], temp);
 					
 				} else if(strcmp(varnames[i], varname) == 0 && (is_var && flags[i] == 3)) {
-					strcat(strlist[0], strlist[1]);
+					strcat(strlist[0], strlist[cmp - 1]);
 				}
 			}
 		    
