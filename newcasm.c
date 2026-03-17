@@ -333,7 +333,7 @@ void sub(char *s, FILE* f, char* argname, int val) {
 					strcat(strlist[0], temp);
 					
 				} else if(strcmp(varnames[i], varname) == 0 && (is_var && flags[cmp - 1] == 3)) {
-					strcat(strlist[0], strlist[1]);
+					strcat(strlist[0], strlist[cmp - 1]);
 				}
 				
 			}
@@ -403,7 +403,9 @@ void sub(char *s, FILE* f, char* argname, int val) {
 				} 
 			}
 			
+			
 			if(string != NULL) {
+				string[j] = '\0';
 				system(string);
 			}
 	    	

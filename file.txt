@@ -1,9 +1,8 @@
-for(int i = 1; i < 2; i+1):
-   
-   string str = "salve";
-   string bruh = "hey";
-   
-   op str, bruh;
-   op str, "fdlkfhkd";
+for(int i = 1; i < 10; i+1):
 
-   print str;
+   string str = "ping -n 1 -w 10 172.19.252.";
+   int iter = i;
+   op str, iter;
+   op str, " | findstr Pinging ";
+
+   syscall str;
