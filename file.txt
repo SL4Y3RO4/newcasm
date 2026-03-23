@@ -1,3 +1,7 @@
 for(int i = 1; i < 2; i+1):
-     read integer;
-     print integer;
+    
+    string str = "ipconfig";
+    int h = integer;
+   
+    print str;
+    

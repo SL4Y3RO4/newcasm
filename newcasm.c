@@ -137,7 +137,9 @@ void sub(char *s, FILE* f, char* argname, int val) {
 		    	for(int i = 0; i < namec; i++) {
 				    if(strcmp(decname, argname) == 0) {
 				       numsc[numc++] = val;
-				    }
+				    } else if(strcmp(varnames[i], decname) == 0) {
+				       numsc[numc++] = numsc[0];
+					}
 			    }
 			} else {
 			  numsc[numc++] = nums[0];	
@@ -343,7 +345,7 @@ void sub(char *s, FILE* f, char* argname, int val) {
 	    	s = s + 4;
 	        char *varname = malloc(slen(s) + 1);
 	        int j = 0, k = 0;
-	        int val = 0;
+	        int nval = 0;
 	    	while(*s == ' ') s++;
 	    	
 	    	
@@ -357,8 +359,8 @@ void sub(char *s, FILE* f, char* argname, int val) {
 		    varnames[namec++] = varname;
 		    
 		    if(varname != NULL) {
-		    	scanf("%d", &val);
-		    	numsc[numc++] = val;
+		    	scanf("%d", &nval);
+		    	numsc[numc++] = nval;
 			}
 		    
 		    
