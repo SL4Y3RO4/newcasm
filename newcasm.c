@@ -337,6 +337,29 @@ void sub(char *s, FILE* f, char* argname, int val) {
 				}
 				
 			}
+			
+		
+	    } else if(strncmp(s, "read", 4) == 0) {
+	    	s = s + 4;
+	        char *varname = malloc(slen(s) + 1);
+	        int j = 0, k = 0;
+	        int val = 0;
+	    	while(*s == ' ') s++;
+	    	
+	    	
+	    	while(*s != ';') {
+	    		if(is_number(*s) || is_letter(*s) || is_specialchar(*s)) {
+	    		  varname[k++] = *s;
+				}
+	    		s++;
+			}
+		    varname[k] = '\0';
+		    varnames[namec++] = varname;
+		    
+		    if(varname != NULL) {
+		    	scanf("%d", &val);
+		    	numsc[numc++] = val;
+			}
 		    
 		    
 		  //print
